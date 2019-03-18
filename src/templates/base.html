@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
 
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/reset.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/base.css") }}">
+    <link rel="icon" type="image/png" href="{{ url_for("static", filename="assets/bananas.jpeg") }}">
+
+    {% block title %}
+      <title>!@#%!#^</title>
+    {% endblock title %}
+  </head>
+
+  <body>
+    <header>
+      <h1>Site Name</h1>
+      <section>
+        <h5>username</h5>
+        <img src="../static/assets/bananas.jpeg" alt="user avatar">
+      </section>
+      <nav>
+        {% block nav %}
+          <form action="{{ url_for(".login") }}" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.email.label }}{{form.email(size=48) }}
+            {{ form.password.label }}{{ form.password(size=48) }}
+            <input type="submit" name="login_form" id="login_form" value="Log Me In">
+          </form>
+        {% endblock nav %}
+      </nav>
+    </header>
+
+    <main>
+      {% block content %}
+
+      {% endblock content %}
+    </main>
+
+    <footer>
+
+    </footer>
+  </body>
 </html>
