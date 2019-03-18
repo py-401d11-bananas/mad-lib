@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Home</title>
+{% endblock title %}
+
+{% block nav %}
+  <section class="">
+    <h2>Welcome back, {user}</h2>
+  </section>
+{% endblock nav %}
+
+{% block content %}
+  <h2>Today's Top Stories</h2>
+  <section class="cards">
+    <h2>{Story Headline}</h2>
+  </section>
+{% endblock content %}
