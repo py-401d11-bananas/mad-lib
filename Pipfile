@@ -19,6 +19,7 @@ flask-wtf = "*"
 gunicorn = "*"
 passlib = "*"
 psycopg2-binary = "*"
+uuid = "*"
 
 [requires]
 python_version = "3.7"
