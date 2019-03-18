@@ -2,13 +2,6 @@ from flask import render_template, redirect, url_for, session, g
 from . import app
 
 
-@app.routes('/login', methods=['GET', 'POST'])
-def login():
-    """
-    """
-    return render_template('auth/login.html')
-
-
 @app.routes('/logout')
 def logout():
     """
