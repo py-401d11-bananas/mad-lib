@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  <title>Home</title>
+  {% if g.user %}
+    <title>Home</title>
+  {% else %}
+    <title>Login</title>
+  {% endif %}
 {% endblock title %}
 
-{% block nav %}
-  <section class="">
-    <h2>Welcome back, {user}</h2>
-  </section>
-{% endblock nav %}
-
 {% block content %}
-  <h2>Today's Top Stories</h2>
-  <section class="cards">
-    <h2>{Story Headline}</h2>
-  </section>
+  {% if g.user %}
+    <h2>Today's Top Stories</h2>
+    <ul class="list minimized-list">
+      {% for story in top_stories %}
+        <li class="story minimized-story">
+          <h4 class="title">{{ story.title }}</h4>
+          <p class="description">{{ story.desc }}</p>
+          <p class="hidden">{{ story.content }}</p>
+          <form action="{{ url_for("?????????") }}">
+            <div class="hidden" hidden>
+              {{ form.title.label }}{{ form.title(size=30) }}
+              {{ form.content.label }}{{ form.content(size=1000) }}
+            </div>
+            <input type="submit" value="Make Me Laugh">
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endblock content %}

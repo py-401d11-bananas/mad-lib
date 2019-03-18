@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Search</title>
+{% endblock title %}
+
+{% block content %}
+  <section class="search">
+    <h2>Search For Stories:</h2>
+    <form action="{{ url_for(".register") }}" method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.keyword.label }}{{ form.keyword(size=30) }}
+      <input type="submit" name="search_form" id="search_form" value="Search">
+    </form>
+  </section>
+{% endblock content %}
