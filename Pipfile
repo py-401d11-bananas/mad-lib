@@ -8,6 +8,7 @@ pytest = "*"
 pytest-cov = "*"
 pep8 = "*"
 newsapi-python = "*"
+autopep8 = "*"
 
 [packages]
 flask = "*"

@@ -8,6 +8,7 @@ def logout():
     """
     return redirect(url_for('.login'))
 
+
 @app.routes('register', methods=['GET', 'POST'])
 def register():
     """
