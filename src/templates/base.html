@@ -25,10 +25,10 @@
         {% block nav %}
           {% if g.user %}
             <ul>
-              <li><a href="{{ url_for(".????????") }}">Search</a></li>
-              <li><a href="{{ url_for(".????????") }}">Search</a></li>
-              <li><a href="{{ url_for(".????????") }}">Search</a></li>
-              <li><a href="{{ url_for(".????????") }}">Search</a></li>
+              <li><a href="{{ url_for(".story_search") }}">Search</a></li>
+              <li><a href="{{ url_for(".saved_stories") }}">Saved</a></li>
+              <li><a href="{{ url_for(".create_story") }}">Create</a></li>
+              <li><a href="{{ url_for(".logout") }}">Logout</a></li>
             </ul>
           {% else %}
             <h2>Log In</h2>
