@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Prompts</title>
+{% endblock title %}
+
+{% block content %}
+  <section class="create">
+    <h2>Feed Me Some Words:</h2>
+    <form action="{{ url_for(".register") }}" method="POST">
+      {{ form.hidden_tag() }}
+        {% for prompt in prompts %}
+          {{ form.prompt.label }}{{ form.prompt(size=30) }}
+        {% endfor %}
+      <input type="submit" name="prompt_form" id="prompt_form" value="Get This Party Started">
+    </form>
+  </section>
+{% endblock content %}
