@@ -1,5 +1,5 @@
-from wftorms import StringField, SelectField, PasswordField
-from wtfforms.validators import DataRequired
+from wtforms import StringField, SelectField, PasswordField, validators
+from wtforms.validators import DataRequired
 from flask_wtf import FlaskForm
 from flask import g
 
@@ -15,12 +15,12 @@ class RegisterForm(FlaskForm):
     """
     """
     username = StringField('Username', [validators.DataRequired])
-    password = PasswordField('Password'. [validatorsDataRequired, validators.EqualTo('confirm', message='Passwords must match')])
+    password = PasswordField('Password', [validators.DataRequired, validators.EqualTo('confirm', message='Passwords must match')])
     confirm = PasswordField('Confirm Password')
 
 
-class TopTen(Flask):
-    title = StringFields('Title', [validators.DataRequired()])
-    description = StringFields('Description', [validators.DataRequired()])
-    content = StringFields('Content', [validators.DataRequired()])
+class TopTen(FlaskForm):
+    title = StringField('Title', [validators.DataRequired()])
+    description = StringField('Description', [validators.DataRequired()])
+    content = StringField('Content', [validators.DataRequired()])
 

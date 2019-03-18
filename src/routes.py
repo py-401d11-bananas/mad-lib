@@ -19,9 +19,9 @@ import os
     """
 
 """
-    #Everything
+    # Everything
     all_articles = newsapi.get_everything
-    (q='bitcoin',   
+    (q='bitcoin',
     sources='bbc-news,the-verge',
     domains='bbc.co.uk,techcrunch.com',
     from_param='2017-12-01',
@@ -30,6 +30,7 @@ import os
     sort_by='relevancy',
     page=2)
     """
+
 
 @app.route('/',  methods=['GET', 'POST'])
 def home():
@@ -53,7 +54,6 @@ def home():
     #         session['user_id'] = user.import ipdb; ipdb.set_trace()
     #         return redirect(url_for('.home'))
 
-
     return render_template('home.html', form=form)
 
 
@@ -68,7 +68,9 @@ def story_search():
 def create_story():
     """
     """
+
     return render_template('create.html')
+
 
 @app.route('/saved', methods=['GET', 'POST'])
 def saved_stories():
@@ -76,11 +78,13 @@ def saved_stories():
     """
     return render_template('saved.html')
 
+
 @app.route('/story', methods=['GET', 'POST'])
 def finished_story():
     """
     """
     return render_template('story.html')
+
 
 @app.route('/prompts', methods=['GET', 'POST'])
 def prompts():
