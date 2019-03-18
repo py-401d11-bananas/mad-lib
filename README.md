@@ -1,6 +1,6 @@
 # mad-lib 
 
-**Authors**: Chris Ball, Jasmin Arensdorf, Paul Williamsen, Evy Haan
+**Authors**: Chris Ball, Paul Williamsen, Evy Haan
 
 **version**: 0.0.0
 
