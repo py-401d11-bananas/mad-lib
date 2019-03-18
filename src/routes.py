@@ -1,6 +1,6 @@
 # from newsapi import NewsApiClient
 from flask import render_template, redirect, url_for
-from .forms import LoginForm
+from .forms import *
 from . import app
 import requests
 import os
@@ -61,15 +61,17 @@ def home():
 def story_search():
     """
     """
-    return render_template('search.html')
+    form = SearchForm()
+
+    return render_template('search.html', form=form)
 
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_story():
     """
     """
-
-    return render_template('create.html')
+    form = CreateStoryForm()
+    return render_template('create.html', form=form)
 
 
 @app.route('/saved', methods=['GET', 'POST'])
@@ -91,3 +93,10 @@ def prompts():
     """
     """
     return render_template('prompts.html')
+
+@app.route('/results', methods=['GET', 'POST'])
+def results():
+    """
+    """
+    form = SearchForm()
+    return render_template('results.html', form=form)

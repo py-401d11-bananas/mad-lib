@@ -42,5 +42,5 @@ class CreateStoryForm(FlaskForm):
 class FinalStoryForm(FlaskForm):
     """
     """
-    name = StringField('Name', [validators.DataRequired()])
-    story = StringField('Story', [validators.DataRequired()])
+    title = StringField('Title', [validators.DataRequired()])
+    content = StringField('Content', [validators.DataRequired()])
