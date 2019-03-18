@@ -7,7 +7,7 @@
 {% block content %}
   <section class="create">
     <h2>Create A Story:</h2>
-    <form action="{{ url_for(".register") }}" method="POST">
+    <form action="{{ url_for(".prompts") }}" method="POST">
       {{ form.hidden_tag() }}
       {{ form.title.label }}{{ form.title(size=30) }}
       {{ form.content.label }}{{ form.content(size=1000) }}
