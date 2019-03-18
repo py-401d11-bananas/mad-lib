@@ -4,11 +4,11 @@
   <title>Story</title>
 {% endblock title %}
 
-{% block content %}
+{#{% block content %}
   <section class="story">
     <h4 class="title">{{ story.title }}</h4>
     <p class="content">{{ story.content }}</p>
-    <form action="{{ url_for(".saved_stories") }}">
+    <form action="{{ url_for(".saved_stories") }}" method="POST">
       <div class="hidden" hidden>
         {{ form.title.label }}{{ form.title(size=30) }}
         {{ form.content.label }}{{ form.content(size=1000) }}
@@ -16,4 +16,4 @@
       <input type="submit" value="Save This Story">
     </form>
   </section>
-{% endblock content %}
+{% endblock content %}#}

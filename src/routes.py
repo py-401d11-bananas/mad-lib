@@ -85,14 +85,16 @@ def saved_stories():
 def finished_story():
     """
     """
-    return render_template('story.html')
+    form = FinalStoryForm()
+    return render_template('story.html', form=form)
 
 
 @app.route('/prompts', methods=['GET', 'POST'])
 def prompts():
     """
     """
-    return render_template('prompts.html')
+    form = PromptsForm()
+    return render_template('prompts.html', form=form)
 
 @app.route('/results', methods=['GET', 'POST'])
 def results():

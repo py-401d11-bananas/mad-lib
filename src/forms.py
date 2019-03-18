@@ -44,3 +44,9 @@ class FinalStoryForm(FlaskForm):
     """
     title = StringField('Title', [validators.DataRequired()])
     content = StringField('Content', [validators.DataRequired()])
+
+
+class PromptsForm(FlaskForm):
+    """
+    """
+    prompts = StringField('Prompts', [validators.DataRequired()])
