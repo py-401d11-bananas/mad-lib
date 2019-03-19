@@ -51,8 +51,8 @@ class PromptsForm(FlaskForm):
     """
     """
     title = StringField('Title', [validators.DataRequired()])
-    # content = StringField('Content', [validators=DataRequired()])
-    # prompts = StringField('Prompts', [validators.DataRequired()])
+    content = StringField('Content', [validators.DataRequired()])
+    prompts = StringField('Prompts', [validators.DataRequired()])
 
 
 class StorySelect(FlaskForm):

@@ -92,11 +92,11 @@ def finished_story():
 def prompts(id):
     """
     """
-    return 'hi' + id
-    # form = PromptsForm()
+    story = PresetStory.query.filter_by(id=id).all()
+    form = PromptsForm()
 
-    # story = PresetStory.query.filter_by(id=id)
-    # return render_template('prompts.html', form=form)
+
+    return render_template('prompts.html', story=story, form=form)
 
 @app.route('/results', methods=['GET', 'POST'])
 def results():
