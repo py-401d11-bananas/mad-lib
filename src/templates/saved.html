@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock title %}
+
+{% block content %}
+  <h2>My Collection</h2>
+  {% for story in user_stories %}
+  <section class="story minimized-story">
+    <h4>{{ story.title }}</h4>
+    <p>{{ story.content }}</p>
+  </section>
+  {% endfor %}
+{% endblock content %}
