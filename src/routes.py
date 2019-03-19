@@ -4,6 +4,7 @@ from .forms import *
 from . import app
 import requests
 import os
+from .models import PresetStory
 
 # Init
 # newsapi = NewsApiClient(api_key='{}')
@@ -36,25 +37,8 @@ import os
 def home():
     """
     """
-
-    form = LoginForm()
-
-    # if form.validate_on_submit():
-    #     username = form.data['username']
-    #     password = form.data['password']
-    #     error = None
-
-    #     user = User.query.filter_by(username=username).first()
-
-    #     if user is None or not User.check_password_hash(user, password):
-    #         error = 'Invalid username or passowrd.'
-
-    #     if error is None:
-    #         session.clear()
-    #         session['user_id'] = user.import ipdb; ipdb.set_trace()
-    #         return redirect(url_for('.home'))
-
-    return render_template('home.html', form=form)
+    stories = PresetStory.query.all()
+    return render_template('home.html', stories=stories)
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -71,6 +55,13 @@ def create_story():
     """
     """
     form = CreateStoryForm()
+
+    if form.validate_on_submit():
+        session['title']= form.data['title']
+        session['content'] = form.data['content']
+
+        return redirect(url_for('.prompts'))
+
     return render_template('create.html', form=form)
 
 
