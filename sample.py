@@ -1,4 +1,4 @@
-from random import *
+from random import randint
 
 story_one = {
     'title': 'The Boy Who Cried Wolf',
@@ -38,15 +38,15 @@ def split_prompts(dict):
 
 
 def create_random_prompts(prompts_array):
-    tuples = []
+    array_of_tuples = []
     for word in range(len(prompts_array) // 10):
         rand = randint(0, len(prompts_array)-1)
         while prompts_array[rand] == '*':
             rand = randint(0, len(prompts_array)-1)
         else:
-            tuples.append((rand, prompts_array[rand]))
+            array_of_tuples.append((rand, prompts_array[rand]))
 
-    return tuples
+    return array_of_tuples
 
 
 def replace_words(story_array, tuples_array):
@@ -67,4 +67,4 @@ def whole_process(dict):
     return join_story(replaced_array)
 
 
-print(whole_process(story_one))
+print(whole_process(story_three))
