@@ -89,7 +89,7 @@ def send_prompts_to_form(dict):
     return tuples_array
 
 
-def receive_user_responses(array_of_tuples)
+# def receive_user_responses(array_of_tuples)
 
 
 # print(whole_process(story_three))
