@@ -6,11 +6,14 @@ from . import app
 def logout():
     """
     """
-    return redirect(url_for('.login'))
+    return redirect(url_for('.home'))
 
 
 @app.routes('register', methods=['GET', 'POST'])
 def register():
     """
     """
+    
     return render_template('auth/register.html')
+
+
