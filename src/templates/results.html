@@ -12,7 +12,7 @@
         <h4 class="title">{{ story.title }}</h4>
         <p class="description">{{ story.desc }}</p>
         <p class="hidden">{{ story.content }}</p>
-        <form action="{{ url_for(".prompts") }}">
+        <form action="{{ url_for(".prompts") }}" method="POST">
           <div class="hidden" hidden>
             {{ form.title.label }}{{ form.title(size=30) }}
             {{ form.content.label }}{{ form.content(size=1000) }}

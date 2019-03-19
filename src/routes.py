@@ -1,9 +1,10 @@
 # from newsapi import NewsApiClient
 from flask import render_template, redirect, url_for
-from .forms import LoginForm
+from .forms import *
 from . import app
 import requests
 import os
+from .models import PresetStory
 
 # Init
 # newsapi = NewsApiClient(api_key='{}')
@@ -36,40 +37,32 @@ import os
 def home():
     """
     """
-
-    form = LoginForm()
-
-    # if form.validate_on_submit():
-    #     username = form.data['username']
-    #     password = form.data['password']
-    #     error = None
-
-    #     user = User.query.filter_by(username=username).first()
-
-    #     if user is None or not User.check_password_hash(user, password):
-    #         error = 'Invalid username or passowrd.'
-
-    #     if error is None:
-    #         session.clear()
-    #         session['user_id'] = user.import ipdb; ipdb.set_trace()
-    #         return redirect(url_for('.home'))
-
-    return render_template('home.html', form=form)
+    stories = PresetStory.query.all()
+    return render_template('home.html', stories=stories)
 
 
 @app.route('/search', methods=['GET', 'POST'])
 def story_search():
     """
     """
-    return render_template('search.html')
+    form = SearchForm()
+
+    return render_template('search.html', form=form)
 
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_story():
     """
     """
+    form = CreateStoryForm()
 
-    return render_template('create.html')
+    if form.validate_on_submit():
+        session['title']= form.data['title']
+        session['content'] = form.data['content']
+
+        return redirect(url_for('.prompts'))
+
+    return render_template('create.html', form=form)
 
 
 @app.route('/saved', methods=['GET', 'POST'])
@@ -83,11 +76,20 @@ def saved_stories():
 def finished_story():
     """
     """
-    return render_template('story.html')
+    form = FinalStoryForm()
+    return render_template('story.html', form=form)
 
 
 @app.route('/prompts', methods=['GET', 'POST'])
 def prompts():
     """
     """
-    return render_template('prompts.html')
+    form = PromptsForm()
+    return render_template('prompts.html', form=form)
+
+@app.route('/results', methods=['GET', 'POST'])
+def results():
+    """
+    """
+    form = SearchForm()
+    return render_template('results.html', form=form)
