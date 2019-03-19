@@ -229,7 +229,7 @@
                 "sha256:9cf3698006012c000af2804fe4186042a4d55df0303552dd190a74f5eaafe69b"
             ],
             "index": "pypi",
-            "version": "==2.17.1"
+            "version": ">=2.20.0"
         },
         "singledispatch": {
             "hashes": [
@@ -264,7 +264,7 @@
                 "sha256:8ed6d5c1ff9d6ba84677310060d6a3a78ca3072ce0684cb3c645023009c114b1",
                 "sha256:b14486978518ca0901a76ba973d7821047409d7f726f22156b24e83fd71382a5"
             ],
-            "version": "==1.21.1"
+            "version": ">=1.23"
         },
         "uuid": {
             "hashes": [
