@@ -6,9 +6,9 @@
 
 {% block content %}
   <h2>Choose a Story</h2>
-  {% for story in stories %}
-  <section class="story minimized-story">
-    <h4>{{ story.title }}</h4>
-  </section>
-  {% endfor %}
+  <form method="POST" action"{{ url_for(".prompts") }}">
+    {{ form.hidden_tag()}}
+    {{ form.stories.label }}{{ form.stories() }}
+    <input type="submit" value="Next">
+  </form>
 {% endblock content %}
