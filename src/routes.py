@@ -37,8 +37,15 @@ from .models import PresetStory, UserStory, db
 def home():
     """
     """
+    form = StorySelect()
+
+    if form.validate_on_submit():
+        story = PresetStory.query.filter_by(id=form.data['stories'])
+
+        return redirect(url_for('.prompts'))
+
     stories = PresetStory.query.all()
-    return render_template('home.html', stories=stories)
+    return render_template('home.html', stories=stories, form=form)
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -85,6 +92,7 @@ def finished_story():
 def prompts():
     """
     """
+    import pdb; pdb.set_trace()
     form = PromptsForm()
     return render_template('prompts.html', form=form)
 
