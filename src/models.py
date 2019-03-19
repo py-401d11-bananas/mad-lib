@@ -28,8 +28,8 @@ class PresetStory(db.Model):
     __tablename__ = 'preset_story'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(256), index=True, unique=True)
-    content = db.Column(db.String(256), unique=True)
+    title = db.Column(db.Text, index=True, unique=True)
+    content = db.Column(db.Text, unique=True)
 
     def __repr__(self):
         return '<Preset Story: {}>'.format(self.title)
@@ -39,8 +39,8 @@ class UserStory(db.Model):
     __tablename__ = 'user_stories'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(256), index=True, unique=True)
-    content = db.Column(db.String(256), unique=True)
+    title = db.Column(db.Text, index=True, unique=True)
+    content = db.Column(db.Text, unique=True)
     # user_id = db.Column(db.ForeignKey('users.id'), nullable=True)
 
     def __repr__(self):

@@ -4,7 +4,7 @@ from .forms import *
 from . import app
 import requests
 import os
-from .models import PresetStory
+from .models import PresetStory, UserStory
 
 # Init
 # newsapi = NewsApiClient(api_key='{}')
@@ -69,6 +69,7 @@ def create_story():
 def saved_stories():
     """
     """
+    stories = UserStory.query.all()
     return render_template('saved.html')
 
 
