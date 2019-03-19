@@ -41,3 +41,67 @@ def db(app, request):
 
     request.addfinalizer(teardown)
     return _db
+
+
+@pytest.fixture()
+def db_session(db, request):
+    """
+
+    """
+    connection = db.engine.connect()
+    transaction = connection.begin()
+
+    options = dict(bind=connection, binds={})
+    session = db.create_scoped_session(options=options)
+
+    db.session = session
+
+    def teardown():
+        transaction.rollback()
+        connection.close()
+        session.remove()
+
+    request.addfinalizer(teardown)
+    return session
+
+
+@pytest.fixture()
+def client(app, db, db_session):
+    """
+
+    """
+    client - app.test_client()
+    ctx = app.app_context()
+    ctx.push()
+
+    yield client
+
+    ctx.pop()
+
+
+@pytest.fixture()
+def user(db_session):
+    """
+
+    """
+    user = User(username='potato', password='secret')
+
+    db_session.add(user)
+    db_session.commit()
+
+    return user
+
+
+@pytest.fixture()
+def authenticated_client(client, user):
+    """
+
+    """
+    client.post(
+        '/login',
+        data={'username': user.username, 'password': 'secret'},
+        follow_redirects=True,
+    )
+    return client
+
+
