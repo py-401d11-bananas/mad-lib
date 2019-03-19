@@ -6,7 +6,7 @@
 
 {% block content %}
   <h2>Choose a Story</h2>
-  <form method="POST" action"{{ url_for(".prompts") }}">
+  <form method="POST" action"{{ url_for(".home") }}">
     {{ form.hidden_tag()}}
     {{ form.stories.label }}{{ form.stories() }}
     <input type="submit" value="Next">

@@ -40,12 +40,12 @@ def home():
     form = StorySelect()
 
     if form.validate_on_submit():
-        story = PresetStory.query.filter_by(id=form.data['stories'])
+        story_id = form.data['stories']
 
-        return redirect(url_for('.prompts'))
+        return redirect(url_for('.prompts', id=story_id))
 
-    stories = PresetStory.query.all()
-    return render_template('home.html', stories=stories, form=form)
+    # stories = PresetStory.query.all()
+    return render_template('home.html', form=form)
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -88,13 +88,15 @@ def finished_story():
     return render_template('story.html', form=form)
 
 
-@app.route('/prompts', methods=['GET', 'POST'])
-def prompts():
+@app.route('/prompts/<id>', methods=['GET', 'POST'])
+def prompts(id):
     """
     """
-    import pdb; pdb.set_trace()
+    story = PresetStory.query.filter_by(id=id).all()
     form = PromptsForm()
-    return render_template('prompts.html', form=form)
+
+
+    return render_template('prompts.html', story=story, form=form)
 
 @app.route('/results', methods=['GET', 'POST'])
 def results():
