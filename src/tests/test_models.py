@@ -1,10 +1,14 @@
-from ..models import User, UserStory
+from ..models import User, UserStory, PresetStory
+from ..utilities import convert_dict_to_model_instance
+from ..stories import *
+import pytest
 
 
 class TestUserModel:
     """
 
     """
+    @pytest.mark.skip
     def test_user_create(self, user):
         assert user.id > 0
 
@@ -36,4 +40,12 @@ class TestUserStoriesModel:
         assert user_story.user_id == 1
 
 
-class test_
+class TestPresetStoriesModel:
+    """
+
+    """
+    def test_dict_to_db_one_entry(self, preset_story):
+        stories = PresetStory.query.all()
+        assert preset_story.title == story_one['title']
+        assert len(stories) == 1
+        assert stories[0].content == story_one['content']

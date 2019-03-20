@@ -19,10 +19,9 @@ python-dotenv = "*"
 flask-wtf = "*"
 gunicorn = "*"
 passlib = "*"
-psycopg2-binary = "*"
+"psycopg2-binary" = "*"
 uuid = "*"
 textblob = "*"
-urlib = "*"
 
 [requires]
 python_version = "3.7"
