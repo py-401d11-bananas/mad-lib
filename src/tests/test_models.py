@@ -34,3 +34,6 @@ class TestUserStoriesModel:
 
     def test_story_user_id(self, user_story):
         assert user_story.user_id == 1
+
+
+class Test

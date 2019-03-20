@@ -4,7 +4,8 @@ from . import app
 import requests
 import os
 from .models import PresetStory, UserStory, db
-from .sample import send_prompts_to_form
+from .stories import *
+from .utilities import send_prompts_to_form, convert_dict_to_model_instance
 
 
 @app.route('/',  methods=['GET', 'POST'])
@@ -90,11 +91,17 @@ def results():
 @app.route('/test_stories')
 def test_stories():
 
-
+    story1 = convert_dict_to_model_instance(story_one)
+    story2 = convert_dict_to_model_instance(story_two)
+    story3 = convert_dict_to_model_instance(story_three)
+    story4 = convert_dict_to_model_instance(story_four)
+    story5 = convert_dict_to_model_instance(story_five)
 
     db.session.add(story1)
     db.session.add(story2)
     db.session.add(story3)
+    db.session.add(story4)
+    db.session.add(story5)
     db.session.commit()
 
     return 'hi'
