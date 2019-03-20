@@ -29,19 +29,17 @@ def saved_stories():
     return render_template('saved.html')
 
 
-@app.route('/story', methods=['GET', 'POST'])
-def finished_story():
+@app.route('/story/<id>', methods=['GET', 'POST'])
+def finished_story(id):
     """
     """
+    data = str(request.form)
+    story = PresetStory.query.filter_by(id=id).first()
 
-    # form = FinalStoryForm()
-    # return render_template('story.html', form=form)
+    form = FinalStoryForm()
 
-    data = request.form
-    # request.method
+    return render_template('story.html', form=form, data=data, story=story)
 
-    # return str(data)
-    return request.method
 
 @app.route('/prompts/<id>', methods=['GET', 'POST'])
 def prompts(id):
@@ -58,11 +56,7 @@ def prompts(id):
 
     stories_new = send_prompts_to_form(story_dict)
 
-    if request.method == 'POST':
-        data = request.form
-        return str(data)
-
-    return render_template('prompts.html', stories_new=stories_new)
+    return render_template('prompts.html', stories_new=stories_new, id=id)
 
 
 @app.route('/test_stories')
