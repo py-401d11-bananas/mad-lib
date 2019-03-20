@@ -82,9 +82,3 @@ def test_logout_title():
 def test_protected_route(client):
     res = client.get('/saved')
     assert res.status_code == 404
-
-
-@pytest.mark.skip()
-def test_nonexistent_route(client):
-    res = client.get('/potato')
-    assert res.status_code == 404
