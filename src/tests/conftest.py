@@ -105,3 +105,18 @@ def authenticated_client(client, user):
     return client
 
 
+@pytest.fixture()
+def user_story(db_session, user):
+    """
+
+    """
+    story = UserStory(
+        title='Story Title',
+        content='This is the actual story',
+        user_id=user.id
+    )
+
+    db_session.add(story)
+    db_session.commit()
+
+    return story
