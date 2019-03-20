@@ -75,9 +75,6 @@ def convert_dict_to_model_instance(dict):
     )
     return story
 
+
 if __name__ == "__main__":
     print(array_from_story_string(story_five))
-
-    arr = ['*', '*', '*', 'Noun', '*', 'Verb Ending in -ing', '*', '*', 'Noun', '*', '*', 'Past Tense Verb', '*', 'Animal', 'Verb Ending in -ing', '*', '*', 'Plural Noun', '*', '*', 'Animal', '*', '*', '*', 'Past Tense Verb', '*', 'Verb Ending in -ing', '*', '*', '*', 'Noun', 'Past Tense Verb', '*', '*', 'Animal', '*', '*', '*', 'Past Tense Verb', '*', '*', '*', 'Noun', 'Past Tense Verb', '*', '*', '*', '*', '*', '*', '*', 'Past Tense Verb', '*', '*', '*', '*', '*', '*', 'Animal', 'Past Tense Verb', '*', 'Verb', '*', '*', '*', 'Noun', 'Past Tense Verb', '*', '*', '*', '*', 'Verb', '*', '*', '*', 'Animal', '*', 'Verb', '*', '*', '*', '*', '*', '*', '*', 'Noun', '*', '*', '*', '*', 'Past Tense Verb', '*', '*', 'Past Tense Verb', '*', '*', '*', '*', 'Past Tense Verb', '*', 'Animal', '*', '*', 'Past Tense Verb', '*', '*', '*', '*', 'Animal', '*', '*', '*', '*', '*', 'Plural Noun', 'Verb', '*', 'Verb', '*', '*', '*', '*', '*', 'Noun', '*', '*', 'Plural Noun', 'Verb', '*', 'Adjective', '*', '*']
-
-    print(string_from_prompts_array(arr))
