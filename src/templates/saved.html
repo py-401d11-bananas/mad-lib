@@ -6,7 +6,7 @@
 
 {% block content %}
   <h2>My Collection</h2>
-  {% for story in user_stories %}
+  {% for story in stories %}
   <section class="story minimized-story">
     <h4>{{ story.title }}</h4>
     <p>{{ story.content }}</p>

@@ -6,11 +6,10 @@
 
 {% block content %}
   <section class="story">
-
-    <p>{{ data }}</p>
-    <p>{{ story.content }}</p>
+    <h3>{{ title }}</h3>
+    <p>{{ story }}</p>
     <form action="{{ url_for(".saved_stories") }}" method="POST">
-      <div class="hidden" hidden>
+      <div>
         {{ form.title.label }}{{ form.title(size=30) }}
         {{ form.content.label }}{{ form.content(size=1000) }}
       </div>

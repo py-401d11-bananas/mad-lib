@@ -4,7 +4,7 @@ from . import app
 import requests
 import os
 from .models import PresetStory, UserStory, db
-from .utilities import send_prompts_to_form
+from .utilities import *
 
 
 @app.route('/',  methods=['GET', 'POST'])
@@ -26,19 +26,53 @@ def saved_stories():
     """
     """
     stories = UserStory.query.all()
-    return render_template('saved.html')
+    return render_template('saved.html', stories=stories)
 
 
 @app.route('/story/<id>', methods=['GET', 'POST'])
 def finished_story(id):
     """
     """
-    data = str(request.form)
+    data = request.form.to_dict()
+
+    keylist = []
+    for key in data:
+        keylist.append((int(key),data[key].upper()))
+
     story = PresetStory.query.filter_by(id=id).first()
 
-    form = FinalStoryForm()
+    story_dict = {
+        'title': story.title,
+        'content': story.content,
+        'prompts': story.prompts
+    }
 
-    return render_template('story.html', form=form, data=data, story=story)
+    story_array = array_from_story_string(story_dict)
+    new_story_array = replace_words(story_array, keylist)
+    new_story = string_from_array(new_story_array)
+
+    form_context =  {
+        'title': story_dict['title'],
+        'content': new_story
+    }
+
+    form = FinalStoryForm(**form_context)
+
+    if form.validate_on_submit():
+        try:
+            user_story = UserStory(
+                title=form.data['title'],
+                content=form.data['content']
+            )
+
+            db.session.add(user_story)
+            db.session.commit()
+        except:
+            return 'oh nooooooo!'
+
+        return redirect(url_for('.saved_stories'))
+
+    return render_template('story.html', form=form, story=new_story, title=story_dict['title'])
 
 
 @app.route('/prompts/<id>', methods=['GET', 'POST'])
