@@ -1,5 +1,6 @@
 from random import randint
-from stories import *
+from .stories import *
+from .models import PresetStory
 
 
 def array_from_story_string(dict):
@@ -64,3 +65,17 @@ def send_prompts_to_form(dict):
     prompts_array = array_from_prompts_string(dict)
     tuples_array = array_of_random_prompt_tuples(prompts_array)
     return tuples_array
+
+
+def convert_dict_to_model_instance(dict):
+    story = PresetStory(
+        title=dict['title'],
+        content=dict['content'],
+        prompts=dict['prompts']
+    )
+    return story
+
+if __name__ == "__main__":
+    print(array_from_story_string(story_four))
+
+    arr = ['*', 'Animal', '*', '*', 'Plural Animal', 'Past Tense Verb', '*', '*', '*', '*', '*', '*', '*', '*', 'The', 'mother', 'dog', 'told', 'the', 'pups,', 'do', 'not', 'go', 'near', 'the', 'well', 'or', 'play', 'around', 'it.', 'One', 'of', 'the', 'pups', 'wondered', 'why', 'they', 'shouldn’t', 'go', 'to', 'the', 'well', 'and', 'decided', 'to', 'explore', 'it.', 'He', 'went', 'to', 'the', 'well.', 'Climbed', 'up', 'the', 'wall', 'and', 'peeked', 'inside.', 'In', 'there,', 'he', 'saw', 'his', 'reflection', 'and', 'thought', 'it', 'was', 'another', 'dog.', 'The', 'pup', 'saw', 'that', 'the', 'other', 'dog', 'in', 'the', 'well', '(his', 'reflection)', 'was', 'doing', 'whatever', 'he', 'was', 'doing,', 'and', 'got', 'angry', 'for', 'imitating', 'him.', 'He', 'decided', 'to', 'fight', 'with', 'the', 'dog', 'and', 'jumped', 'into', 'the', 'well,', 'only', 'to', 'find', 'no', 'dog', 'there.', 'He', 'barked', 'and', 'barked', 'and', 'swam', 'until', 'the', 'farmer', 'came', 'and', 'rescued', 'him.', 'The', 'pup', 'had', 'learned', 'his', 'lesson.']
