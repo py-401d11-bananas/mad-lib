@@ -94,4 +94,4 @@ def send_prompts_to_form(dict):
 
 # print(whole_process(story_three))
 
-print(prompt_user_in_terminal(story_one))
+# print(send_prompts_to_form(story_one))

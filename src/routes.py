@@ -1,36 +1,10 @@
-# from newsapi import NewsApiClient
 from flask import render_template, redirect, url_for
 from .forms import *
 from . import app
 import requests
 import os
 from .models import PresetStory, UserStory, db
-
-# Init
-# newsapi = NewsApiClient(api_key='{}')
-
-"""
-    # /v2/top-headlines
-    top_headlines = newsapi.get_top_headlines
-    (q='bitcoin',
-    sources='bbc-news,the-verge',
-    category='business',
-    language='en',
-    country='us')
-    """
-
-"""
-    # Everything
-    all_articles = newsapi.get_everything
-    (q='bitcoin',
-    sources='bbc-news,the-verge',
-    domains='bbc.co.uk,techcrunch.com',
-    from_param='2017-12-01',
-    to='2017-12-12',
-    language='en',
-    sort_by='relevancy',
-    page=2)
-    """
+from .sample import send_prompts_to_form
 
 
 @app.route('/',  methods=['GET', 'POST'])
@@ -44,7 +18,6 @@ def home():
 
         return redirect(url_for('.prompts', id=story_id))
 
-    # stories = PresetStory.query.all()
     return render_template('home.html', form=form)
 
 
@@ -92,9 +65,16 @@ def finished_story():
 def prompts(id):
     """
     """
-    story = PresetStory.query.filter_by(id=id).all()
+    story = PresetStory.query.filter_by(id=id).first()
     form = PromptsForm()
 
+    story_dict = {
+        'title': story.title,
+        'content': story.content,
+        'prompts': story.prompts
+    }
+
+    stories_new = send_prompts_to_form(story_dict)
 
     return render_template('prompts.html', story=story, form=form)
 
