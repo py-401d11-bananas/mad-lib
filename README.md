@@ -1,4 +1,4 @@
-# mad-lib 
+# mad-lib
 
 **Authors**: Chris Ball, Paul Williamsen, Evy Haan
 
@@ -18,3 +18,7 @@ Pytest
 
 
 ## API
+
+
+## Attribution
+The stories we used in our application were borrowed from https://www.momjunction.com/articles/moral-stories-for-kids_00369197/.
