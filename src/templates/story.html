@@ -8,12 +8,16 @@
   <section class="story">
     <h3>{{ title }}</h3>
     <p>{{ story }}</p>
-    <form action="{{ url_for(".saved_stories") }}" method="POST">
+    <form action="{{ url_for(".finished_story", id=id) }}" method="POST">
+      {{ form.hidden_tag }}
       <div>
         {{ form.title.label }}{{ form.title(size=30) }}
         {{ form.content.label }}{{ form.content(size=1000) }}
       </div>
       <input type="submit" value="Save This Story">
     </form>
+  {% if form.errors %}
+  {{ form.errors }}
+  {% endif %}
   </section>
 {% endblock content %}

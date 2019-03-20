@@ -33,11 +33,32 @@ def saved_stories():
 def finished_story(id):
     """
     """
+
+    form = FinalStoryForm()
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            try:
+                user_story = UserStory(
+                    title=form.data['title'],
+                    content=form.data['content']
+                )
+
+                db.session.add(user_story)
+                db.session.commit()
+            except:
+                return 'oh nooooooo!'
+                
+            return redirect(url_for('.saved_stories'))
+        else:
+            return str(form.errors)
+
     data = request.form.to_dict()
 
     keylist = []
     for key in data:
         keylist.append((int(key),data[key].upper()))
+
 
     story = PresetStory.query.filter_by(id=id).first()
 
@@ -58,21 +79,9 @@ def finished_story(id):
 
     form = FinalStoryForm(**form_context)
 
-    if form.validate_on_submit():
-        try:
-            user_story = UserStory(
-                title=form.data['title'],
-                content=form.data['content']
-            )
+    return render_template('story.html', form=form, id=id, story=new_story, title=story_dict['title'])
 
-            db.session.add(user_story)
-            db.session.commit()
-        except:
-            return 'oh nooooooo!'
 
-        return redirect(url_for('.saved_stories'))
-
-    return render_template('story.html', form=form, story=new_story, title=story_dict['title'])
 
 
 @app.route('/prompts/<id>', methods=['GET', 'POST'])
