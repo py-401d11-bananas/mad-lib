@@ -1,5 +1,5 @@
 from random import randint
-from stories import *
+from .stories import *
 
 
 def array_from_story_string(dict):

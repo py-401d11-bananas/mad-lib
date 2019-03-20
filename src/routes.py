@@ -4,7 +4,7 @@ from . import app
 import requests
 import os
 from .models import PresetStory, UserStory, db
-from .sample import send_prompts_to_form
+from .utilities import send_prompts_to_form
 
 
 @app.route('/',  methods=['GET', 'POST'])
@@ -19,30 +19,6 @@ def home():
         return redirect(url_for('.prompts', id=story_id))
 
     return render_template('home.html', form=form)
-
-
-@app.route('/search', methods=['GET', 'POST'])
-def story_search():
-    """
-    """
-    form = SearchForm()
-
-    return render_template('search.html', form=form)
-
-
-@app.route('/create', methods=['GET', 'POST'])
-def create_story():
-    """
-    """
-    form = CreateStoryForm()
-
-    if form.validate_on_submit():
-        session['title'] = form.data['title']
-        session['content'] = form.data['content']
-
-        return redirect(url_for('.prompts'))
-
-    return render_template('create.html', form=form)
 
 
 @app.route('/saved', methods=['GET', 'POST'])
@@ -79,14 +55,6 @@ def prompts(id):
     return render_template('prompts.html', stories_new=stories_new)
 
 
-@app.route('/results', methods=['GET', 'POST'])
-def results():
-    """
-    """
-    form = SearchForm()
-    return render_template('results.html', form=form)
-
-
 @app.route('/test_stories')
 def test_stories():
 
@@ -102,9 +70,3 @@ def test_stories():
     db.session.commit()
 
     return 'hi'
-
-
-@app.route('/get_stories')
-def get_stories():
-    stories = PresetStory.query.all()
-    return stories[0].content
