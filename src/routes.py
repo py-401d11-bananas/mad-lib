@@ -65,8 +65,8 @@ def finished_story():
 def prompts(id):
     """
     """
+
     story = PresetStory.query.filter_by(id=id).first()
-    form = PromptsForm()
 
     story_dict = {
         'title': story.title,
@@ -76,7 +76,7 @@ def prompts(id):
 
     stories_new = send_prompts_to_form(story_dict)
 
-    return render_template('prompts.html', story=story, form=form)
+    return render_template('prompts.html', stories_new=stories_new)
 
 
 @app.route('/results', methods=['GET', 'POST'])
