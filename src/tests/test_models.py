@@ -36,4 +36,4 @@ class TestUserStoriesModel:
         assert user_story.user_id == 1
 
 
-class Test
+class test_
