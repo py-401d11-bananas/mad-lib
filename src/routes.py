@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, session, request
 from .forms import *
 from . import app
 import requests
@@ -33,9 +33,15 @@ def saved_stories():
 def finished_story():
     """
     """
-    form = FinalStoryForm()
-    return render_template('story.html', form=form)
 
+    # form = FinalStoryForm()
+    # return render_template('story.html', form=form)
+
+    data = request.form
+    # request.method
+
+    # return str(data)
+    return request.method
 
 @app.route('/prompts/<id>', methods=['GET', 'POST'])
 def prompts(id):
@@ -51,6 +57,10 @@ def prompts(id):
     }
 
     stories_new = send_prompts_to_form(story_dict)
+
+    if request.method == 'POST':
+        data = request.form
+        return str(data)
 
     return render_template('prompts.html', stories_new=stories_new)
 
