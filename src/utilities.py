@@ -3,8 +3,8 @@ from .stories import *
 from .models import PresetStory
 
 
-def array_from_story_string(dict):
-    story_array = dict['content'].split(' ')
+def array_from_story_string(str):
+    story_array = str.split(' ')
     return story_array
 
 
@@ -13,8 +13,8 @@ def string_from_prompts_array(arr):
     return prompts_string
 
 
-def array_from_prompts_string(dict):
-    prompts_array = dict['prompts'].split('|')
+def array_from_prompts_string(str):
+    prompts_array = str.split('|')
     return prompts_array
 
 
@@ -68,8 +68,8 @@ def prompt_user_in_terminal(dict):
 
 
 def send_prompts_to_form(dict):
-    story_array = array_from_story_string(dict)
-    prompts_array = array_from_prompts_string(dict)
+    story_array = array_from_story_string(dict['content'])
+    prompts_array = array_from_prompts_string(dict['prompts'])
     tuples_array = array_of_random_prompt_tuples(prompts_array)
     return tuples_array
 

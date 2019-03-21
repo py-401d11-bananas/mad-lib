@@ -7,7 +7,15 @@
 {% block content %}
   <section class="story">
     <h3>{{ title }}</h3>
-    <p>{{ story }}</p>
+    <p>
+      {% for i in array_from_story_string(new_story) %}
+        {% if i[0] == '*' %}
+          <span>{{ i[1:] }}</span>
+        {% else %}
+          {{ i }}
+        {% endif %}
+      {% endfor %}
+    </p>
     <form action="{{ url_for(".saved_stories", id=id) }}" method="POST">
       {{ form.hidden_tag() }}
       <div hidden>
