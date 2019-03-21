@@ -1,3 +1,9 @@
+"""
+This Module contains pre-fabricated stories.
+
+Each story is stored as a dictionary with it's title, content, and prompts keys with string values. The 'content' and 'prompts' string values are split on spaces and pipes, respectively, to create lists. These have a 1:1 match for word and part of speech at corresponding indexes. This is used to find and replace words of the story with user inputs.
+"""
+
 
 story_one = {
     'title': 'The Boy Who Cried Wolf',
