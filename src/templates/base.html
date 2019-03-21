@@ -18,8 +18,8 @@
     <header>
       <h1>Site Name</h1>
       <section>
-        <h5>{ username }</h5>
-        <img src="../static/assets/bananas.jpeg" alt="user avatar">
+        <h5>{{ g.user.username }}</h5>
+        <img src="{{ url_for("static", filename="assets/bananas.jpeg") }}" alt="user avatar">
       </section>
       <nav>
         {% block nav %}
@@ -41,6 +41,10 @@
       {% block content %}
 
       {% endblock content %}
+
+      {% for message in get_flashed_messages() %}
+        <span class="flashed container">{{ message }}</span>
+      {% endfor %}
     </main>
 
     <footer>
