@@ -111,7 +111,7 @@ def saved_stories():
 
 
 @app.route('/test_stories')
-def test_stories():
+def seed_stories():
 
     story1 = convert_dict_to_model_instance(story_one)
     story2 = convert_dict_to_model_instance(story_two)
@@ -126,4 +126,4 @@ def test_stories():
     db.session.add(story5)
     db.session.commit()
 
-    return 'hi'
+    return 'stories added to database!'
