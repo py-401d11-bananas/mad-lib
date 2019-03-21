@@ -20,7 +20,7 @@ def array_from_prompts_string(dict):
 
 def array_of_random_prompt_tuples(prompts_array):
     array_of_tuples = []
-    for word in range(len(prompts_array) // 20):
+    for word in range(len(prompts_array) // 7):
         rand = randint(0, len(prompts_array)-1)
         while prompts_array[rand] == '*':
             rand = randint(0, len(prompts_array)-1)

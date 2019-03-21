@@ -15,11 +15,11 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     """
     """
-    username = StringField('Username', [validators.DataRequired])
-    password = PasswordField('Password', [validators.DataRequired, validators.EqualTo(
-        'confirm', message='Passwords must match')])
-    confirm = PasswordField('Confirm Password')
-
+    username = StringField('Username', [validators.DataRequired()])
+    password = PasswordField('Password', [validators.DataRequired()])
+    # confirm = PasswordField('Confirm Password')
+# , validators.EqualTo(
+#         'confirm', message='Passwords must match')
 
 class FinalStoryForm(FlaskForm):
     """

@@ -7,8 +7,7 @@
 {% block content %}
   <section class="create">
     <h2>Feed Me Some Words:</h2>
-    <p>{{ stories_new }}</p>
-    <form action='{{ url_for(".finished_story", id=id) }}' method="POST">
+    <form action="{{ url_for(".finished_story", id=id) }}" method="POST">
       <ul>
         {% for prompt in stories_new %}
         <li><input type='text' id='{{ prompt[0] }}' name='{{ prompt[0] }}' placeholder="{{ prompt[1] }}"></li>
