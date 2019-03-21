@@ -79,7 +79,7 @@ def finished_story(id):
     return render_template('story.html', form=form, id=id, story=new_story, title=story_dict['title'])
 
 
-@app.route('/prompts/<id>', methods=['GET', 'POST'])
+@app.route('/prompts/<id>', methods=['GET'])
 def prompts(id):
     """
     """

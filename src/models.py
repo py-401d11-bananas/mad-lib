@@ -14,13 +14,13 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(256), index=True, nullable=False, unique=True)
     password = db.Column(db.String(256), nullable=False)
-    # user_story = db.relationship('UserStory', backref='user_story', lazy=True)
+    user_story = db.relationship('UserStory', backref='user_story', lazy=True)
 
     def __repr__(self):
-        return '<User: {}>'.format(self.email)
+        return '<User: {}>'.format(self.username)
 
-    def __init__(self, email, password):
-        self.email = email
+    def __init__(self, username, password):
+        self.username = username
         self.password = sha256_crypt.hash(password)
 
 
@@ -28,8 +28,8 @@ class PresetStory(db.Model):
     __tablename__ = 'preset_story'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(256), index=True, unique=True)
-    content = db.Column(db.Text, unique=True)
+    title = db.Column(db.String(256), index=True)
+    content = db.Column(db.Text)
     prompts = db.Column(db.Text)
 
     def __repr__(self):
@@ -40,11 +40,10 @@ class UserStory(db.Model):
     __tablename__ = 'user_stories'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(256), index=True, unique=True)
-    content = db.Column(db.Text, unique=True)
+    title = db.Column(db.String(256), index=True)
+    content = db.Column(db.Text)
     date_created = db.Column(db.DateTime, default=dt.now())
-
-    # user_id = db.Column(db.ForeignKey('users.id'), nullable=True)
+    user_id = db.Column(db.ForeignKey('users.id'), nullable=True)
 
     def __repr__(self):
         return '<User Story: {}>'.format(self.title)
