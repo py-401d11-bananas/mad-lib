@@ -20,7 +20,8 @@ def array_from_story_string(dict):
     Returns
         A list of the words of the content of the story.
     """
-    story_array = dict['content'].split(' ')
+
+    story_array = str.split(' ')
     return story_array
 
 
@@ -34,6 +35,7 @@ def array_from_prompts_string(dict):
     Returns
         A list of the prompts of the story.
     """
+    
     prompts_array = dict['prompts'].split('|')
     return prompts_array
 
@@ -53,16 +55,26 @@ def string_from_prompts_array(arr):
     return prompts_string
 
 
+def array_from_prompts_string(str):
+    prompts_array = str.split('|')
+    return prompts_array
 
 
 def array_of_random_prompt_tuples(prompts_array):
+
+    available_indices = []
+
+    for i in range(len(prompts_array)):
+        if prompts_array[i] != '*':
+            available_indices.append(i)
+
+    shuffle(available_indices)
+
     array_of_tuples = []
-    for word in range(len(prompts_array) // 7):
-        rand = randint(0, len(prompts_array)-1)
-        while prompts_array[rand] == '*':
-            rand = randint(0, len(prompts_array)-1)
-        else:
-            array_of_tuples.append((rand, prompts_array[rand]))
+
+    for i in range(len(prompts_array) // 7):
+        rand = available_indices[i]
+        array_of_tuples.append((rand, prompts_array[rand]))
 
     return array_of_tuples
 
@@ -77,21 +89,6 @@ def string_from_array(arr):
     string = ' '.join(arr)
     return string
 
-
-def send_prompts_to_form(dict):
-    story_array = array_from_story_string(dict)
-    prompts_array = array_from_prompts_string(dict)
-    tuples_array = array_of_random_prompt_tuples(prompts_array)
-    return tuples_array
-
-
-def convert_dict_to_model_instance(dict):
-    story = PresetStory(
-        title=dict['title'],
-        content=dict['content'],
-        prompts=dict['prompts']
-    )
-    return story
 
 def whole_process(dict):
     story_array = array_from_story_string(dict)
@@ -110,6 +107,23 @@ def prompt_user_in_terminal(dict):
         new_tuple_array.append((tuple[0], input(str(tuple[1]) + ': ').upper()))
     replaced_array = replace_words(story_array, new_tuple_array)
     return string_from_array(replaced_array)
+
+
+def send_prompts_to_form(dict):
+    story_array = array_from_story_string(dict['content'])
+    prompts_array = array_from_prompts_string(dict['prompts'])
+    tuples_array = array_of_random_prompt_tuples(prompts_array)
+    return tuples_array
+
+
+def convert_dict_to_model_instance(dict):
+    story = PresetStory(
+        title=dict['title'],
+        content=dict['content'],
+        prompts=dict['prompts']
+    )
+    return story
+
 
 if __name__ == "__main__":
     print(array_from_story_string(story_five))

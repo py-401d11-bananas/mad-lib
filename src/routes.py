@@ -92,7 +92,7 @@ def finished_story(id):
     data = request.form.to_dict()
     keylist = []
     for key in data:
-        keylist.append((int(key), data[key].upper()))
+        keylist.append((int(key), '*' + data[key]))
 
     story = PresetStory.query.filter_by(id=id).first()
 
@@ -102,7 +102,7 @@ def finished_story(id):
         'prompts': story.prompts
     }
 
-    story_array = array_from_story_string(story_dict)
+    story_array = array_from_story_string(story_dict['content'])
     new_story_array = replace_words(story_array, keylist)
     new_story = string_from_array(new_story_array)
 
@@ -113,7 +113,14 @@ def finished_story(id):
 
     form = FinalStoryForm(**form_context)
 
-    return render_template('story.html', form=form, id=id, story=new_story, title=story_dict['title'])
+    return render_template(
+        'story.html',
+        form=form,
+        id=id,
+        new_story=new_story,
+        title=story_dict['title'],
+        array_from_story_string=array_from_story_string
+    )
 
 
 @app.route('/saved', methods=['GET', 'POST'])

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Fondamento%7CReenie+Beanie');
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: blue;
+    font-weight: bold;
+}
+
+.story {
+    margin: 20px;
+    padding: 30px;
+    background-color: black;
+}
+
+.story > p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    line-height: 42px;
+}
+
+.story > p > span {
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    padding: 4px 4px 2px 4px;
+    color: rgb(227, 227, 172);
+    font-size: 38px;
+    /* background-color: rgb(235, 235, 235); */
+    border-radius: 2px;
+    text-decoration: rgb(227, 227, 172) underline;
+}
