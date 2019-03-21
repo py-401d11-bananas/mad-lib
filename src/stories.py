@@ -22,3 +22,19 @@ story_three = {
 
     'prompts': """*|*|*|*|Verb Ending in -ing|*|*|Noun|*|*|*|*|*|Plural Noun|*|*|*|*|*|*|Noun|*|*|*|*|Body Part|*|Past Tense Verb|*|*|*|*|*|*|*|*|Plural Noun|*|*|*|*|*|*|*|*|*|Adverb|Past Tense Verb|*|*|*|*|Past Tense Verb|*|Profession|*|*|Noun|*|Verb Ending in -ing|*|*|*|*|Verb Ending in -ing|*|Noun|*|*|*|*|*|*|*|*|Past Tense Verb|*|*|Profession|Past Tense Verb|*|Adjective|*|*|Adverb|*|Verb Ending in -s|*|Verb Ending in -s|*|Noun|*|*|*|*|Verb Ending in -ing|*|*|Verbing Ending in -ing|*|*|Verb Ending in -s|*|*|*|*|*|*|Verb Ending in -s|*|*|*|*|*|Noun|Verb Ending in -s|*|*|*|*|*|*|*|Plural Noun|*|*|*|Profession|Verb Ending in -s|*|*|Verb|*|Adjective|*|*|*|Noun|*|*|*|*|*|*|Verb Ending in -s|*|*|*|*|*|*|*|*|*|Past Tense Verb|*|Plural Noun|*|*|Verb Ending in -s|*"""
 }
+
+story_four = {
+    'title': 'The Dog At The Well',
+
+    'content': """A dog and her pups lived on a farm, where there was a well. The mother dog told the pups, do not go near the well or play around it. One of the pups wondered why they shouldn’t go to the well and decided to explore it. He went to the well, climbed up the wall and peeked inside. In there, he saw his reflection and thought it was another dog. The pup saw that the other dog in the well (his reflection) was doing whatever he was doing, and got angry for imitating him. He decided to fight with the dog and jumped into the well, only to find no dog there. He barked and barked and swam until the farmer came and rescued him. The pup had learned his lesson.""",
+
+    'prompts': """*|Animal|*|*|Plural Animal|Past Tense Verb|*|*|*|*|*|*|*|*|*|*|Animal|Past Tense Verb|*|*|*|*|Verb|*|*|Noun|*|Verb|*|*|*|*|*|Plural Animal|Past Tense Verb|*|*|*|Verb|*|*|Noun|*|Past Tense Verb|*|Verb|*|*|Past Tense Verb|*|*|*|Past Tense Verb|*|*|Noun|*|Past Tense Verb|*|*|*|*|Past Tense Verb|*|Noun|*|Past Tense Verb|*|*|*|*|*|Animal|Past Tense Verb|*|*|*|Animal|*|*|Noun|*|*|*|Verb Ending in -ing|*|*|*|*|*|*|*|*|Verb Ending in -ing|*|*|Past Tense Verb|*|Verb|*|*|Animal|*|Past Tense Verb|*|*|*|*|*|*|*|Animal|*|*|Past Tense Verb|*|Past Tense Verb|*|Past Tense Verb|*|*|Profession|Past Tense Verb|*|Past Tense Verb|*|*|Animal|*|Past Tense Verb|*|*"""
+}
+
+story_five = {
+    'title': 'The Man And The Cat',
+
+    'content': """One day, a man was walking by a road when he heard a cat meowing from the bushes nearby. The cat was stuck and needed help getting out. When the man reached out, the cat got scared and scratched the man. The man screamed in pain but didn’t back down. He tried again and again, even as the cat continued to scratch his hands. Another passerby saw this and said, “Just let it be! The cat will find a way to come out later”. The man didn’t pay heed but tried until he helped the cat. Once he let the cat free, he told the other man, “The cat is an animal, and its instincts make him scratch and attack. I am a human and my instincts make me compassionate and kind”.""",
+
+    'prompts': """*|*|*|Noun|*|Verb Ending in -ing|*|*|Noun|*|*|Past Tense Verb|*|Animal|Verb Ending in -ing|*|*|Plural Noun|*|*|Animal|*|*|*|Past Tense Verb|*|Verb Ending in -ing|*|*|*|Noun|Past Tense Verb|*|*|Animal|*|*|*|Past Tense Verb|*|*|*|Noun|Past Tense Verb|*|*|*|*|*|*|*|Past Tense Verb|*|*|*|*|*|*|Animal|Past Tense Verb|*|Verb|*|*|*|Noun|Past Tense Verb|*|*|*|*|Verb|*|*|*|Animal|*|Verb|*|*|*|*|*|*|*|Noun|*|*|*|*|Past Tense Verb|*|*|Past Tense Verb|*|*|*|*|Past Tense Verb|*|Animal|*|*|Past Tense Verb|*|*|*|*|Animal|*|*|*|*|*|Plural Noun|Verb|*|Verb|*|*|*|*|*|Noun|*|*|Plural Noun|Verb|*|Adjective|*|*"""
+}

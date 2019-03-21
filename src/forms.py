@@ -36,3 +36,7 @@ class StorySelect(FlaskForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.stories.choices = [(str(s.id), s.title) for s in PresetStory.query.all()]
+
+
+class PromptsForm(FlaskForm):
+    pass

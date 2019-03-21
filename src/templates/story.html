@@ -8,7 +8,7 @@
   <section class="story">
     <h3>{{ title }}</h3>
     <p>{{ story }}</p>
-    <form action="{{ url_for(".finished_story", id=id) }}" method="POST">
+    <form action="{{ url_for(".saved_stories", id=id) }}" method="POST">
       {{ form.hidden_tag() }}
       <div>
         {{ form.title.label }}{{ form.title(size=30) }}

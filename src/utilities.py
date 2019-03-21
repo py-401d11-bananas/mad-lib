@@ -1,5 +1,6 @@
 from random import randint
 from .stories import *
+from .models import PresetStory
 
 
 def array_from_story_string(dict):
@@ -64,3 +65,16 @@ def send_prompts_to_form(dict):
     prompts_array = array_from_prompts_string(dict)
     tuples_array = array_of_random_prompt_tuples(prompts_array)
     return tuples_array
+
+
+def convert_dict_to_model_instance(dict):
+    story = PresetStory(
+        title=dict['title'],
+        content=dict['content'],
+        prompts=dict['prompts']
+    )
+    return story
+
+
+if __name__ == "__main__":
+    print(array_from_story_string(story_five))

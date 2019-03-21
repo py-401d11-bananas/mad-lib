@@ -1,6 +1,8 @@
 from ..models import User, PresetStory, UserStory
 from ..models import db as _db
 from .. import app as _app
+from ..utilities import convert_dict_to_model_instance
+from ..stories import *
 import pytest
 import os
 
@@ -8,14 +10,14 @@ import os
 @pytest.fixture()
 def app(request):
     """
-
+    Session-wide Flask application for testing purposes.
     """
     _app.config.from_mapping(
         TESTING=True,
         SECRET_KEY=os.getenv('SECRET_KEY'),
         SQLALCHEMY_DATABASE_URI=os.getenv('TEST_DATABASE_URL'),
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
-        WTF_CSRF_ENABLED=False,
+        WTF_CSRF_ENABLED=False
     )
 
     ctx = _app.app_context()
@@ -31,7 +33,7 @@ def app(request):
 @pytest.fixture()
 def db(app, request):
     """
-
+    Session-wide test database
     """
     def teardown():
         _db.drop_all()
@@ -46,7 +48,7 @@ def db(app, request):
 @pytest.fixture()
 def db_session(db, request):
     """
-
+    Creates new database session for testing
     """
     connection = db.engine.connect()
     transaction = connection.begin()
@@ -70,7 +72,7 @@ def client(app, db, db_session):
     """
 
     """
-    client - app.test_client()
+    client = app.test_client()
     ctx = app.app_context()
     ctx.push()
 
@@ -99,7 +101,7 @@ def authenticated_client(client, user):
     """
     client.post(
         '/login',
-        data={'username': user.username, 'password': 'secret'},
+        data={'username': user.username, 'password': user.password},
         follow_redirects=True,
     )
     return client
@@ -115,6 +117,19 @@ def user_story(db_session, user):
         content='This is the actual story',
         user_id=user.id
     )
+
+    db_session.add(story)
+    db_session.commit()
+
+    return story
+
+
+@pytest.fixture
+def preset_story(db_session):
+    """
+
+    """
+    story = convert_dict_to_model_instance(story_one)
 
     db_session.add(story)
     db_session.commit()
