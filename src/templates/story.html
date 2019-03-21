@@ -10,7 +10,7 @@
     <p>{{ story }}</p>
     <form action="{{ url_for(".saved_stories", id=id) }}" method="POST">
       {{ form.hidden_tag() }}
-      <div>
+      <div hidden>
         {{ form.title.label }}{{ form.title(size=30) }}
         {{ form.content.label }}{{ form.content(size=1000) }}
       </div>

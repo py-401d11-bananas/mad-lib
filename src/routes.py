@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, session, request
+from flask import render_template, redirect, url_for, session, request, g
 from .forms import *
 from . import app
 import requests
@@ -6,53 +6,55 @@ import os
 from .models import PresetStory, UserStory, db
 from .stories import *
 from .utilities import *
+from .auth import login_required, login
 
 
 @app.route('/',  methods=['GET', 'POST'])
 def home():
     """
     """
-    form = StorySelect()
+    if g.user:
 
-    if form.validate_on_submit():
-        story_id = form.data['stories']
+        form = StorySelect()
 
-        return redirect(url_for('.prompts', id=story_id))
+        if form.validate_on_submit():
+            story_id = form.data['stories']
 
-    return render_template('home.html', form=form)
+            return redirect(url_for('.prompts', id=story_id))
+
+        return render_template('home.html', form=form)
+
+    return redirect(url_for('.login'))
 
 
-@app.route('/saved', methods=['GET', 'POST'])
-def saved_stories():
+@app.route('/prompts/<id>', methods=['GET'])
+@login_required
+def prompts(id):
     """
     """
-    form = FinalStoryForm()
 
-    if form.validate_on_submit():
-        try:
-            user_story = UserStory(
-                title=form.data['title'],
-                content=form.data['content']
-            )
+    story = PresetStory.query.filter_by(id=id).first()
 
-            db.session.add(user_story)
-            db.session.commit()
+    story_dict = {
+        'title': story.title,
+        'content': story.content,
+        'prompts': story.prompts
+    }
 
-        except:
-            return 'oh nooooooo!'
+    stories_new = send_prompts_to_form(story_dict)
 
-        return redirect(url_for('.saved_stories'))
-
-    stories = UserStory.query.all()
-    return render_template('saved.html', stories=stories)
+    return render_template('prompts.html', stories_new=stories_new, id=id, form=PromptsForm())
 
 
-@app.route('/story/<id>', methods=['POST'])
+@app.route('/story/<id>', methods=['GET', 'POST'])
+@login_required
 def finished_story(id):
     """
     """
-    data = request.form.to_dict()
+    if request.method == 'GET':
+        return redirect(url_for('.prompts', id=id))
 
+    data = request.form.to_dict()
     keylist = []
     for key in data:
         keylist.append((int(key), data[key].upper()))
@@ -79,22 +81,31 @@ def finished_story(id):
     return render_template('story.html', form=form, id=id, story=new_story, title=story_dict['title'])
 
 
-@app.route('/prompts/<id>', methods=['GET', 'POST'])
-def prompts(id):
+@app.route('/saved', methods=['GET', 'POST'])
+@login_required
+def saved_stories():
     """
     """
+    form = FinalStoryForm()
 
-    story = PresetStory.query.filter_by(id=id).first()
+    if form.validate_on_submit():
+        try:
+            user_story = UserStory(
+                title=form.data['title'],
+                content=form.data['content'],
+                user_id=g.user.id
+            )
 
-    story_dict = {
-        'title': story.title,
-        'content': story.content,
-        'prompts': story.prompts
-    }
+            db.session.add(user_story)
+            db.session.commit()
 
-    stories_new = send_prompts_to_form(story_dict)
+        except:
+            return 'oh nooooooo!'
 
-    return render_template('prompts.html', stories_new=stories_new, id=id, form=PromptsForm())
+        return redirect(url_for('.saved_stories'))
+
+    stories = UserStory.query.filter(UserStory.user_id == g.user.id).all()
+    return render_template('saved.html', stories=stories)
 
 
 @app.route('/test_stories')
