@@ -23,6 +23,14 @@ class User(db.Model):
         self.username = username
         self.password = sha256_crypt.hash(password)
 
+    @classmethod
+    def check_password_hash(cls, user, password):
+        if user is not None:
+            if sha256_crypt.verify(password, user.password):
+                return True
+
+        return False
+
 
 class PresetStory(db.Model):
     __tablename__ = 'preset_story'
