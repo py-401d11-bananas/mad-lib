@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, shuffle
 from .stories import *
 from .models import PresetStory
 
@@ -19,13 +19,20 @@ def array_from_prompts_string(dict):
 
 
 def array_of_random_prompt_tuples(prompts_array):
+
+    available_indices = []
+
+    for i in range(len(prompts_array)):
+        if prompts_array[i] != '*':
+            available_indices.append(i)
+
+    shuffle(available_indices)
+
     array_of_tuples = []
-    for word in range(len(prompts_array) // 7):
-        rand = randint(0, len(prompts_array)-1)
-        while prompts_array[rand] == '*':
-            rand = randint(0, len(prompts_array)-1)
-        else:
-            array_of_tuples.append((rand, prompts_array[rand]))
+
+    for i in range(len(prompts_array) // 7):
+        rand = available_indices[i]
+        array_of_tuples.append((rand, prompts_array[rand]))
 
     return array_of_tuples
 
