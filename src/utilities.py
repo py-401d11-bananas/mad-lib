@@ -12,7 +12,7 @@ from random import randint
 
 def array_from_story_string(dict):
     """
-    Splits the story string into an array of its words.
+    Splits a story string into an array of its words.
 
     Args
         dict: A story that is a dictionary with 'title', 'content', and 'prompts' keywords.
@@ -25,6 +25,15 @@ def array_from_story_string(dict):
 
 
 def array_from_prompts_string(dict):
+    """
+    Splits a string of prompts into a list.
+
+    Args
+        dict: A story that is a dictionary with 'title', 'content', and 'prompts' keywords.
+
+    Returns
+        A list of the prompts of the story.
+    """
     prompts_array = dict['prompts'].split('|')
     return prompts_array
 
