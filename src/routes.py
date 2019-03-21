@@ -4,12 +4,8 @@ from . import app
 import requests
 import os
 from .models import PresetStory, UserStory, db
-<<<<<<< HEAD
 from .stories import *
-from .utilities import send_prompts_to_form, convert_dict_to_model_instance
-=======
 from .utilities import *
->>>>>>> ea5e589a9ce197e1248ed42dbdaf65537a9b44be
 
 
 @app.route('/',  methods=['GET', 'POST'])
@@ -30,40 +26,36 @@ def home():
 def saved_stories():
     """
     """
+    form = FinalStoryForm()
+
+    if form.validate_on_submit():
+        try:
+            user_story = UserStory(
+                title=form.data['title'],
+                content=form.data['content']
+            )
+
+            db.session.add(user_story)
+            db.session.commit()
+
+        except:
+            return 'oh nooooooo!'
+
+        return redirect(url_for('.saved_stories'))
+
     stories = UserStory.query.all()
     return render_template('saved.html', stories=stories)
 
 
-@app.route('/story/<id>', methods=['GET', 'POST'])
+@app.route('/story/<id>', methods=['POST'])
 def finished_story(id):
     """
     """
-
-    form = FinalStoryForm()
-
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            try:
-                user_story = UserStory(
-                    title=form.data['title'],
-                    content=form.data['content']
-                )
-
-                db.session.add(user_story)
-                db.session.commit()
-            except:
-                return 'oh nooooooo!'
-                
-            return redirect(url_for('.saved_stories'))
-        else:
-            return str(form.errors)
-
     data = request.form.to_dict()
 
     keylist = []
     for key in data:
-        keylist.append((int(key),data[key].upper()))
-
+        keylist.append((int(key), data[key].upper()))
 
     story = PresetStory.query.filter_by(id=id).first()
 
@@ -77,7 +69,7 @@ def finished_story(id):
     new_story_array = replace_words(story_array, keylist)
     new_story = string_from_array(new_story_array)
 
-    form_context =  {
+    form_context = {
         'title': story_dict['title'],
         'content': new_story
     }
@@ -85,8 +77,6 @@ def finished_story(id):
     form = FinalStoryForm(**form_context)
 
     return render_template('story.html', form=form, id=id, story=new_story, title=story_dict['title'])
-
-
 
 
 @app.route('/prompts/<id>', methods=['GET', 'POST'])
@@ -104,7 +94,7 @@ def prompts(id):
 
     stories_new = send_prompts_to_form(story_dict)
 
-    return render_template('prompts.html', stories_new=stories_new, id=id)
+    return render_template('prompts.html', stories_new=stories_new, id=id, form=PromptsForm())
 
 
 @app.route('/test_stories')

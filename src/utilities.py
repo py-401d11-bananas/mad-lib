@@ -1,9 +1,6 @@
 from random import randint
 from .stories import *
-<<<<<<< HEAD
 from .models import PresetStory
-=======
->>>>>>> ea5e589a9ce197e1248ed42dbdaf65537a9b44be
 
 
 def array_from_story_string(dict):
