@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, session, request, g
+from flask import render_template, redirect, url_for, session, request, g, flash
 from .forms import *
 from . import app
 import requests
@@ -7,6 +7,7 @@ from .models import PresetStory, UserStory, db
 from .stories import *
 from .utilities import *
 from .auth import login_required, login
+from sqlalchemy.exc import DBAPIError, InvalidRequestError
 
 
 @app.route('/',  methods=['GET', 'POST'])
@@ -99,8 +100,9 @@ def saved_stories():
             db.session.add(user_story)
             db.session.commit()
 
-        except:
-            return 'oh nooooooo!'
+        except (DBAPIError, InvalidRequestError):
+            flash('I AM GROOT?')
+            return render_template('/home.html')
 
         return redirect(url_for('.saved_stories'))
 
