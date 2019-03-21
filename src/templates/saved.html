@@ -5,10 +5,10 @@
 {% endblock title %}
 
 {% block content %}
-  <h2>My Collection</h2>
+  <h4>My Collection</h4>
   {% for story in stories %}
   <section class="story minimized-story">
-    <h4>{{ story.title }}</h4>
+    <h3>{{ story.title }}</h3>
     <p>{{ story.content }}</p>
   </section>
   {% endfor %}

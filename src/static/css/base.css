@@ -1,19 +1,197 @@
 @import url('https://fonts.googleapis.com/css?family=Fondamento%7CReenie+Beanie');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: blue;
-    font-weight: bold;
+    display: inline-block;
+    text-align: left;
+    width: 49%;
+    padding-left: 40px;
+    margin: 20px auto;
+    font-family: 'Lobster', monospace;
+    color: #3d85c6;
+    font-size: 70px;
+    box-sizing: border-box;
+}
+
+nav {
+    display: inline-block;
+}
+
+main {
+    text-align: center;
+}
+
+.container {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#choose-a-story {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+form li {
+    font-size: 18px;
+}
+
+#choose-a-story label {
+    font-family: monospace;
+    font-size: 24px;
+}
+
+#choose-a-story input {
+    margin: 10px;
+}
+
+#prompts-form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#prompts-form li, .auth li {
+    display: inline-block;
+}
+
+#prompts-form input, .auth input {
+    width: 260px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    padding-left: 10px;
+}
+
+.flashed-container {
+    display: inline-block;
+    background-color: rgb(182, 159, 159);
+    border-radius: 10px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#prompts-form .button, #choose-a-story .button, .auth .button, #story-form .button {
+    font-family: monospace;
+    font-size: 28px;
+    width: 100%;
+    margin-top: 25px;
+    height: 50px;
+    background-color: #3d85c6;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+#prompts-form .button, #story-form .button {
+    width: 400px;
+}
+
+.auth {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.auth .button {
+    display: block;
+    margin: 15px auto;
+    width: 250px;
+}
+
+.auth label {
+    display: block;
+    font-family: monospace;
+    font-size: 24px;
+}
+
+header > section > nav > ul > li {
+    display: inline-block;
+    font-family: monospace;
+    text-decoration: none !important;
+    font-size: 24px;
+    text-align: center;
+    width: 120px;
+}
+
+header > section > nav > ul {
+    margin: 0 0 0 auto;
+}
+
+#left {
+    text-align: left;
+}
+
+#right {
+    text-align: center;
+}
+
+.placeholder {
+    display: inline-block;
+    width: 200px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+header > section > nav > ul > li:first-child {
+    text-align: right;
+}
+
+header > section > nav > ul > li:last-child {
+    text-align: left;
+}
+
+h2 {
+    display: inline-block;
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    padding: 0 20px;
+    font-size: 60px;
+}
+
+h4 {
+    font-family: 'Open Sans', monospace;
+    font-size: 50px;
+    margin: 20px 0 40px;
+    text-align: center;
+}
+
+header section {
+    display: inline-block;
+    vertical-align: middle;
+    width: 49%;
+    text-align: right;
+    box-sizing: border-box;
+    line-height: 60px;
+}
+
+.story > h3 {
+    color: white;
+
+    font-family: monospace;
+    font-size: 40px;
+    padding: 0 0 25px 0;
 }
 
 .story {
-    margin: 20px;
+    width: 85%;
+    margin: 20px auto 60px;
     padding: 30px;
     background-color: black;
+    border-radius: 18px;
+    box-shadow: 5px 5px 3px 3px rgb(162, 162, 162);
 }
 
 .story > p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: monospace;
     color: rgb(255, 255, 255);
     font-size: 22px;
     line-height: 42px;

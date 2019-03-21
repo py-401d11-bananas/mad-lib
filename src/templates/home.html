@@ -5,10 +5,12 @@
 {% endblock title %}
 
 {% block content %}
-  <h2>Choose a Story</h2>
-  <form method="POST" action"{{ url_for(".home") }}">
-    {{ form.hidden_tag()}}
-    {{ form.stories.label }}{{ form.stories() }}
-    <input type="submit" value="Next">
-  </form>
+  <h4>Choose a Story</h4>
+  <section class="container">
+    <form id="choose-a-story" method="POST" action"{{ url_for(".home") }}">
+      {{ form.hidden_tag()}}
+      {{ form.stories() }}
+      <input class="button" type="submit" value="Next">
+    </form>
+  </section>
 {% endblock content %}
