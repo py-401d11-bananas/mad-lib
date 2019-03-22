@@ -177,6 +177,26 @@ def saved_stories():
     )
 
 
+@app.route('/delete/<id>', methods=['POST'])
+def delete_story(id):
+    """
+    Allows the user to dlete any of their saved stories.
+
+    Returns
+        Saved Stories Page: Renders the saved stories page, less the deleted story.
+
+    Exceptions
+        DBAPIError: Failure of saving to a database.
+        InvalidRequestError: Runtime state or other SQLAlchemy errors.
+    """
+    exhiled = UserStory.query.filter_by(id=id).first()
+
+    db.session.delete(exhiled)
+    db.session.commit()
+
+    return redirect(url_for('.saved_stories'))
+
+
 @app.route('/test_stories')
 def seed_stories():
     """
@@ -199,3 +219,4 @@ def seed_stories():
     db.session.commit()
 
     return 'Stories added to database!'
+
