@@ -12,14 +12,17 @@ h1 {
     color: #3d85c6;
     font-size: 50px;
     box-sizing: border-box;
+    text-shadow: 1px 1px rgb(189, 189, 189);
 }
 
 h1 span {
     display: inline-block;
-    width: 200px;
+    width: 220px;
     font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
     font-size: 50px;
     text-align: center;
+    text-shadow: none;
+
 }
 
 nav {
@@ -75,12 +78,12 @@ form li {
 
 .flashed-container {
     display: inline-block;
-    background-color: rgb(182, 159, 159);
     border-radius: 10px;
-    padding: 10px;
-    font-family: monospace;
-    font-size: 18px;
+    padding: 10px 25px;
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
     margin-top: 20px;
+    color: rgb(184, 41, 41);
 }
 
 #prompts-form .button, #choose-a-story .button, .auth .button, #story-form .button, #delete-form .button {
@@ -105,7 +108,7 @@ form li {
 #delete-form .button {
     height: 30px;
     font-size: 18px;
-    background-color: rgb(107, 0, 21);
+    background-color: rgb(184, 41, 41);
     width: 100px;
 }
 
@@ -174,6 +177,7 @@ h2 {
     font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
     padding: 0 20px;
     font-size: 60px;
+    color: #3d85c6;
 }
 
 h4 {
@@ -241,9 +245,6 @@ header section {
 }
 
 
-#text-content {
-    color:red;
-}
 #randomizer {
     border-top: 1px solid #999;
     display: block;

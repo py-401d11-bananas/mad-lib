@@ -7,7 +7,7 @@
 {% block content %}
   <h4>My Collection</h4>
   {% if len(stories) > 0 %}
-    {% for story in stories %}
+    {% for story in stories[::-1] %}
       <section class="story minimized-story">
         <h3>{{ story.title }}</h3>
         <p>
