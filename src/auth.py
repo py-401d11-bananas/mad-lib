@@ -82,10 +82,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('.login'))
-
-    if request.method == 'POST':
-        return redirect(url_for('.register'))
+            return redirect(url_for('.home'))
 
     if request.method == 'POST':
         return redirect(url_for('.register'))
