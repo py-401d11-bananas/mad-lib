@@ -6,21 +6,25 @@
 
 {% block content %}
   <h4>My Collection</h4>
-  {% for story in stories %}
-  <section class="story minimized-story">
-    <h3>{{ story.title }}</h3>
-    <p>
-      {% for i in array_from_story_string(story.content) %}
-        {% if i[0] == '*' %}
-          <span>{{ i[1:] }}</span>
-        {% else %}
-          {{ i }}
-        {% endif %}
-      {% endfor %}
-    </p>
-  </section>
-  <form action="{{ url_for(".delete_story", id=story.id) }}" method="POST">
-    <input class="button" type="submit" value="DELETE">
-  </form>
-  {% endfor %}
+  {% if len(stories) > 0 %}
+    {% for story in stories[::-1] %}
+      <section class="story minimized-story">
+        <h3>{{ story.title }}</h3>
+        <p>
+          {% for i in array_from_story_string(story.content) %}
+            {% if i[0] == '*' %}
+              <span>{{ i[1:] }}</span>
+            {% else %}
+              {{ i }}
+            {% endif %}
+          {% endfor %}
+        </p>
+        <form id="delete-form" action="{{ url_for(".delete_story", id=story.id) }}" method="POST">
+          <input class="button" type="submit" value="Remove">
+        </form>
+      </section>
+    {% endfor %}
+  {% else %}
+    <h6>Click <span><a href="{{ url_for(".home") }}">here</a></span> to get started!</h6>
+  {% endif %}
 {% endblock content %}

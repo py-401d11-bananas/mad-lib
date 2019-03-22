@@ -173,7 +173,8 @@ def saved_stories():
     return render_template(
         'saved.html',
         stories=stories,
-        array_from_story_string=array_from_story_string
+        array_from_story_string=array_from_story_string,
+        len=len
     )
 
 
