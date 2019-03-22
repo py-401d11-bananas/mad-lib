@@ -74,6 +74,7 @@ def prompts(id):
         'prompts.html',
         stories_new=stories_new,
         id=id,
+        title=story_dict['title'],
         form=PromptsForm()
     )
 
