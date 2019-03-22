@@ -9,7 +9,15 @@
   {% for story in stories %}
   <section class="story minimized-story">
     <h3>{{ story.title }}</h3>
-    <p>{{ story.content }}</p>
+    <p>
+      {% for i in array_from_story_string(story.content) %}
+        {% if i[0] == '*' %}
+          <span>{{ i[1:] }}</span>
+        {% else %}
+          {{ i }}
+        {% endif %}
+      {% endfor %}
+    </p>
   </section>
   {% endfor %}
 {% endblock content %}
