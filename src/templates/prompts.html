@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Prompts</title>
+{% endblock title %}
+
+{% block content %}
+  <section class="create">
+    <h4>Feed Me Some Words:</h4>
+    <form id="prompts-form" action="{{ url_for(".finished_story", id=id) }}" method="POST">
+      <ul>
+        {% for prompt in stories_new %}
+        <li><input type='text' id='{{ prompt[0] }}' name='{{ prompt[0] }}' placeholder="{{ prompt[1] }}"></li>
+        {% endfor %}
+      </ul>
+      <input class="button" type="submit" value="Get This Party Started">
+    </form>
+  </section>
+{% endblock content %}

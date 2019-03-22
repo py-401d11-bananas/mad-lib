@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css?family=Fondamento%7CReenie+Beanie');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+h1 {
+    display: inline-block;
+    text-align: left;
+    width: 49%;
+    padding-left: 40px;
+    margin: 20px auto;
+    font-family: 'Lobster', monospace;
+    color: #3d85c6;
+    font-size: 50px;
+    box-sizing: border-box;
+    text-shadow: 1px 1px rgb(189, 189, 189);
+}
+
+h1 span {
+    display: inline-block;
+    width: 220px;
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    text-align: center;
+    text-shadow: none;
+
+}
+
+nav {
+    display: inline-block;
+}
+
+main {
+    text-align: center;
+}
+
+.container {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#choose-a-story {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+form li {
+    font-size: 18px;
+}
+
+#choose-a-story label {
+    font-family: monospace;
+    font-size: 24px;
+}
+
+#choose-a-story input {
+    margin: 10px;
+}
+
+#prompts-form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#prompts-form li, .auth li {
+    display: inline-block;
+}
+
+#prompts-form input, .auth input {
+    width: 260px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    padding-left: 10px;
+}
+
+.flashed-container {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 10px 25px;
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    margin-top: 20px;
+    color: rgb(184, 41, 41);
+}
+
+#prompts-form .button, #choose-a-story .button, .auth .button, #story-form .button, #delete-form .button {
+    font-family: monospace;
+    font-size: 28px;
+    width: 100%;
+    margin-top: 25px;
+    height: 50px;
+    background-color: #3d85c6;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+#prompts-form .button, #story-form .button {
+    width: 400px;
+}
+
+#delete-form {
+    text-align: right;
+}
+
+#delete-form .button {
+    height: 30px;
+    font-size: 18px;
+    background-color: rgb(184, 41, 41);
+    width: 100px;
+}
+
+.auth {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.auth .button {
+    display: block;
+    margin: 15px auto;
+    width: 250px;
+}
+
+.auth label {
+    display: block;
+    font-family: monospace;
+    font-size: 24px;
+}
+
+header > section > nav > ul > li {
+    display: inline-block;
+    font-family: monospace;
+    text-decoration: none !important;
+    font-size: 24px;
+    text-align: center;
+    width: 120px;
+}
+
+header > section > nav > ul {
+    margin: 0 0 0 auto;
+}
+
+#left {
+    text-align: left;
+}
+
+#right {
+    text-align: center;
+}
+
+.placeholder {
+    display: inline-block;
+    width: 200px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+header > section > nav > ul > li:first-child {
+    text-align: right;
+}
+
+header > section > nav > ul > li:last-child {
+    text-align: left;
+}
+
+h2 {
+    display: inline-block;
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    padding: 0 20px;
+    font-size: 60px;
+    color: #3d85c6;
+}
+
+h4 {
+    font-family: 'Open Sans', monospace;
+    font-size: 50px;
+    margin: 20px 0 40px;
+    text-align: center;
+}
+
+h6 {
+    font-family: monospace;
+    font-size: 24px;
+    margin: 20px 0 40px;
+    text-align: center;
+}
+
+h6 span {
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+    text-decoration: underline;
+    color: #3d85c6;
+}
+
+header section {
+    display: inline-block;
+    vertical-align: middle;
+    width: 49%;
+    text-align: right;
+    box-sizing: border-box;
+    line-height: 60px;
+}
+
+.story > h3 {
+    color: white;
+
+    font-family: monospace;
+    font-size: 40px;
+    padding: 0 0 25px 0;
+}
+
+.story {
+    width: 85%;
+    margin: 20px auto 60px;
+    padding: 30px;
+    background-color: black;
+    border-radius: 18px;
+    box-shadow: 5px 5px 3px 3px rgb(162, 162, 162);
+}
+
+.story > p {
+    font-family: monospace;
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    line-height: 42px;
+}
+
+.story > p > span {
+    font-family: 'Reenie Beanie', Georgia, 'Times New Roman', Times, serif;
+    padding: 4px 4px 2px 4px;
+    color: rgb(227, 227, 172);
+    font-size: 38px;
+    /* background-color: rgb(235, 235, 235); */
+    border-radius: 2px;
+    text-decoration: rgb(227, 227, 172) underline;
+}
+
+
+#randomizer {
+    border-top: 1px solid #999;
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+    padding-top: 10px;
+    outline: none;
+}

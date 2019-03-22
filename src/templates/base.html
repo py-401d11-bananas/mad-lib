@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/reset.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/base.css") }}">
+    <link rel="icon" type="image/png" href="{{ url_for("static", filename="assets/bananas.jpeg") }}">
+
+    {% block title %}
+      <title>!@#%!#^$</title>
+    {% endblock title %}
+  </head>
+
+  <body>
+    <header>
+      <h1>My {<span id="text-box"></span>} Story</h1>
+      <section id="nav-user">
+        <nav>
+          {% block nav %}
+            <ul>
+              {% if g.user %}
+              <li><a href="{{ url_for(".home") }}">Home</a></li>
+              <li><a href="{{ url_for(".saved_stories") }}">Saved</a></li>
+              <li><a href="{{ url_for(".logout") }}">Logout</a></li>
+              {% else %}
+                <li id="left"><a href="{{ url_for(".register") }}">Register</a></li>
+                <li id="right"><a href="{{ url_for(".login") }}">Login</a></li>
+              {% endif %}
+            </ul>
+          {% endblock nav %}
+        </nav>
+        {% if g.user %}
+          <h2>{{ g.user.username }}</h2>
+        {% else %}
+        {% endif %}
+      </section>
+    </header>
+
+    <main>
+      {% block content %}
+
+      {% endblock content %}
+
+      {% for message in get_flashed_messages() %}
+        <span class="flashed-container">{{ message }}</span>
+      {% endfor %}
+    </main>
+
+    <footer>
+
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type='text/javascript' src="{{ url_for("static", filename="scripts/app.js") }}"></script>
+  </body>
+
+</html>

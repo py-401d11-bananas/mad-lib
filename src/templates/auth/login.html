@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Log In</title>
+{% endblock title %}
+
+
+{% block content %}
+<section class="login">
+    <h4>Log In</h4>
+    <form class="auth" action="{{ url_for(".login") }}" method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.username.label }}{{form.username(size=48) }}
+      {{ form.password.label }}{{ form.password(size=48) }}
+      <input class="button" class="button" type="submit" name="login_form" id="login_form" value="Log Me In">
+    </form>
+  </section>
+{% endblock content %}
+

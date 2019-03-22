@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock title %}
+
+{% block content %}
+  <h4>Choose a Story</h4>
+  <section class="container">
+    <form id="choose-a-story" method="POST" action"{{ url_for(".home") }}">
+      {{ form.hidden_tag()}}
+      {{ form.stories() }}
+      <input class="button" type="submit" value="Next">
+    </form>
+  </section>
+{% endblock content %}
