@@ -6,7 +6,8 @@
 
 {% block content %}
   <section class="create">
-    <h4>Feed Me Some Words:</h4>
+    <h4>Feed Me Some Words</h4>
+    <h3>{{ title }}</h3>
     <form id="prompts-form" action="{{ url_for(".finished_story", id=id) }}" autocomplete="off" method="POST">
       <ul>
         {% for prompt in stories_new %}

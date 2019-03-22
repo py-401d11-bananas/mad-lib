@@ -180,6 +180,12 @@ h2 {
     color: #3d85c6;
 }
 
+h3 {
+    font-family: monospace;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
 h4 {
     font-family: 'Open Sans', monospace;
     font-size: 50px;
