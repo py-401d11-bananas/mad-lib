@@ -5,9 +5,9 @@ Once a story is selected, the string of the content is split, as is it's array o
 
 """
 
-from .models import PresetStory
+from random import shuffle
 from .stories import *
-from random import randint
+from .models import PresetStory
 
 
 # ========= Used in App ================

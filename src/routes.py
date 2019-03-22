@@ -57,7 +57,7 @@ def prompts(id):
 
     Returns
         Story Page: Redirects to the story page, passing the user's inputs.
-        
+
     """
 
     story = PresetStory.query.filter_by(id=id).first()
@@ -70,7 +70,12 @@ def prompts(id):
 
     stories_new = send_prompts_to_form(story_dict)
 
-    return render_template('prompts.html', stories_new=stories_new, id=id, form=PromptsForm())
+    return render_template(
+        'prompts.html',
+        stories_new=stories_new,
+        id=id,
+        form=PromptsForm()
+    )
 
 
 @app.route('/story/<id>', methods=['GET', 'POST'])
@@ -91,8 +96,16 @@ def finished_story(id):
 
     data = request.form.to_dict()
     keylist = []
+
     for key in data:
-        keylist.append((int(key), '*' + data[key]))
+        arr = data[key].split(' ')
+        for i in range(len(arr)):
+            arr[i] = '*' + arr[i]
+        str = ' '.join(arr)
+        data[key] = str
+
+    for key in data:
+        keylist.append((int(key), data[key]))
 
     story = PresetStory.query.filter_by(id=id).first()
 
@@ -157,7 +170,11 @@ def saved_stories():
         return redirect(url_for('.saved_stories'))
 
     stories = UserStory.query.filter(UserStory.user_id == g.user.id).all()
-    return render_template('saved.html', stories=stories)
+    return render_template(
+        'saved.html',
+        stories=stories,
+        array_from_story_string=array_from_story_string
+    )
 
 
 @app.route('/test_stories')
