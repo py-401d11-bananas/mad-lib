@@ -8,7 +8,7 @@ class TestUserModel:
     """
 
     """
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_user_create(self, user):
         assert user.id > 0
 
@@ -16,7 +16,7 @@ class TestUserModel:
         assert user.username == 'potato'
 
     def test_user_password(self, user):
-        assert user.password == 'secret'
+        assert User.check_password_hash(user, 'secret')
 
 
 class TestUserStoriesModel:
@@ -28,7 +28,7 @@ class TestUserStoriesModel:
         assert len(stories) == 0
 
     def test_create_story(self, user_story):
-        assert UserStory.id > 0
+        assert user_story.id > 0
 
     def test_story_title(self, user_story):
         assert user_story.title == 'Story Title'
