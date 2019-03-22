@@ -87,6 +87,9 @@ def login():
     if request.method == 'POST':
         return redirect(url_for('.register'))
 
+    if request.method == 'POST':
+        return redirect(url_for('.register'))
+
     return render_template('auth/login.html', form=form)
 
 

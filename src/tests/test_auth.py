@@ -36,7 +36,7 @@ def test_has_correct_nav_when_logged_in(authenticated_client):
 def test_register_new_user(client):
     cred = {'username': 'potroast', 'password': 'delicious'}
     res = client.post('/register', data=cred, follow_redirects=True)
-    assert b'<title>Login</title>' in res.data
+    assert b'<title>Log In</title>' in res.data
     assert b'potroast has already been registered!' not in res.data
 
 
@@ -45,7 +45,7 @@ def test_register_existing_user(client):
     cred = {'username': 'potroast', 'password': 'delicious'}
     res = client.post('/register', data=cred, follow_redirects=True)
     res = client.post('/register', data=cred, follow_redirects=True)
-    assert b'<title>Login</title>' in res.data
+    assert b'<title>Log In</title>' in res.data
     assert b'potroast has already been registered!' in res.data
 
 
@@ -58,7 +58,7 @@ def test_get_login_status(client):
 # @pytest.mark.skip()
 def test_get_login_title(client):
     res = client.get('/login')
-    assert b'<title>Login</title>' in res.data
+    assert b'<title>Log In</title>' in res.data
 
 
 # @pytest.mark.skip()
@@ -76,7 +76,7 @@ def test_logout_status(authenticated_client):
 # @pytest.mark.skip()
 def test_logout_title(authenticated_client):
     res = authenticated_client.get('/logout', follow_redirects=True)
-    assert b'<title>Login</title>' in res.data
+    assert b'<title>Log In</title>' in res.data
 
 
 # @pytest.mark.skip()
