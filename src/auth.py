@@ -77,6 +77,7 @@ def login():
 
         if user is None or not User.check_password_hash(user, password):
             error = 'Invalid username or password.'
+            flash(error)
 
         if error is None:
             session.clear()
