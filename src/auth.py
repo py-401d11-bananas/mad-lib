@@ -17,7 +17,7 @@ Functions
 from . import app
 from .forms import LoginForm, RegisterForm
 from .models import db, User
-from flask import render_template, redirect, url_for, session, g, flash, abort
+from flask import render_template, redirect, url_for, session, g, flash, abort, request
 import functools
 
 
@@ -81,7 +81,10 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('.home'))
+            return redirect(url_for('.login'))
+
+    if request.method == 'POST':
+        return redirect(url_for('.register'))
 
     return render_template('auth/login.html', form=form)
 
