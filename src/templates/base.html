@@ -17,23 +17,26 @@
   <body>
     <header>
       <h1>Site Name</h1>
-      <section>
-        <h5>{{ g.user.username }}</h5>
+      <section id="nav-user">
+        <nav>
+          {% block nav %}
+            <ul>
+              {% if g.user %}
+              <li><a href="{{ url_for(".home") }}">Home</a></li>
+              <li><a href="{{ url_for(".saved_stories") }}">Saved</a></li>
+              <li><a href="{{ url_for(".logout") }}">Logout</a></li>
+              {% else %}
+                <li id="left"><a href="{{ url_for(".register") }}">Register</a></li>
+                <li id="right"><a href="{{ url_for(".login") }}">Login</a></li>
+              {% endif %}
+            </ul>
+          {% endblock nav %}
+        </nav>
+        {% if g.user %}
+          <h2>{{ g.user.username }}</h2>
+        {% else %}
+        {% endif %}
       </section>
-      <nav>
-        {% block nav %}
-          <ul>
-            {% if g.user %}
-            <li><a href="{{ url_for(".home") }}">Home</a></li>
-            <li><a href="{{ url_for(".saved_stories") }}">Saved</a></li>
-            <li><a href="{{ url_for(".logout") }}">Logout</a></li>
-            {% else %}
-              <li><a href="{{ url_for(".register") }}">Register</a></li>
-              <li><a href="{{ url_for(".login") }}">Login</a></li>
-            {% endif %}
-          </ul>
-        {% endblock nav %}
-      </nav>
     </header>
 
     <main>
@@ -42,16 +45,12 @@
       {% endblock content %}
 
       {% for message in get_flashed_messages() %}
-        <span class="flashed container">{{ message }}</span>
+        <span class="flashed-container">{{ message }}</span>
       {% endfor %}
     </main>
 
     <footer>
 
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="../scripts/app.js"></script>
-
   </body>
 </html>

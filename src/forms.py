@@ -43,6 +43,7 @@ class RegisterForm(FlaskForm):
 # , validators.EqualTo(
 #         'confirm', message='Passwords must match')
 
+
 class FinalStoryForm(FlaskForm):
     """
     Allows a user to save their story.
