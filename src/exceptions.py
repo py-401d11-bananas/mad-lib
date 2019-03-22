@@ -1,3 +1,11 @@
+"""
+This Module contains routes for error redirects.
+
+Functions
+    page_not_found: Redirects to a 404 Page Not Found.
+    bad_request: Redirects to a 400 Bad Request.
+"""
+
 from . import app
 from flask import render_template
 

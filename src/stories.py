@@ -1,3 +1,9 @@
+"""
+This Module contains pre-fabricated stories.
+
+Each story is stored as a dictionary with it's title, content, and prompts keys with string values. The 'content' and 'prompts' string values are split on spaces and pipes, respectively, to create lists. These have a 1:1 match for word and part of speech at corresponding indexes. This is used to find and replace words of the story with user inputs.
+"""
+
 
 story_one = {
     'title': 'The Boy Who Cried Wolf',
@@ -20,7 +26,7 @@ story_three = {
 
     'content': """A nine-year-old boy was sitting at his desk in class, when suddenly, his pants felt wet, and there was a puddle at his feet. His heart almost skipped a beat, as he got worried that his classmates would see that and make fun of him. He quickly wanted to do something, and saw the teacher and his classmate Susie walking towards him. Susie was carrying a bowl of goldfish. As they came closer, the boy thought that the teacher noticed his wet pants, and suddenly Susie trips and drops the fishbowl in his lap. While thanking God for helping him, he pretends to get angry with Susie and yells at her. Everyone in the class thinks it is Susie’s fault that the boy’s pants got wet. The teacher helps the boy change into dry clothes, and the class continues. Later that evening, the boy asks Susie, “You did that on purpose, didn’t you?” “I wet my pants once too”, whispers Susie.""",
 
-    'prompts': """*|*|*|*|Verb Ending in -ing|*|*|Noun|*|*|*|*|*|Plural Noun|*|*|*|*|*|*|Noun|*|*|*|*|Body Part|*|Past Tense Verb|*|*|*|*|*|*|*|*|Plural Noun|*|*|*|*|*|*|*|*|*|Adverb|Past Tense Verb|*|*|*|*|Past Tense Verb|*|Profession|*|*|Noun|*|Verb Ending in -ing|*|*|*|*|Verb Ending in -ing|*|Noun|*|*|*|*|*|*|*|*|Past Tense Verb|*|*|Profession|Past Tense Verb|*|Adjective|*|*|Adverb|*|Verb Ending in -s|*|Verb Ending in -s|*|Noun|*|*|*|*|Verb Ending in -ing|*|*|Verbing Ending in -ing|*|*|Verb Ending in -s|*|*|*|*|*|*|Verb Ending in -s|*|*|*|*|*|Noun|Verb Ending in -s|*|*|*|*|*|*|*|Plural Noun|*|*|*|Profession|Verb Ending in -s|*|*|Verb|*|Adjective|*|*|*|Noun|*|*|*|*|*|*|Verb Ending in -s|*|*|*|*|*|*|*|*|*|Past Tense Verb|*|Plural Noun|*|*|Verb Ending in -s|*"""
+    'prompts': """*|*|*|*|Verb Ending in -ing|*|*|Noun|*|*|*|*|*|Plural Noun|*|*|*|*|*|*|Noun|*|*|*|*|Body Part|*|Past Tense Verb|*|*|*|*|*|*|*|*|Plural Noun|*|*|*|*|*|*|*|*|*|Adverb|Past Tense Verb|*|*|*|*|Past Tense Verb|*|Profession|*|*|Noun|*|Verb Ending in -ing|*|*|*|*|Verb Ending in -ing|*|Noun|*|*|*|*|*|*|*|*|Past Tense Verb|*|*|Profession|Past Tense Verb|*|Adjective|*|*|Adverb|*|Verb Ending in -s|*|Verb Ending in -s|*|Noun|*|*|*|*|Verb Ending in -ing|*|*|Verb Ending in -ing|*|*|Verb Ending in -s|*|*|*|*|*|*|Verb Ending in -s|*|*|*|*|*|Noun|Verb Ending in -s|*|*|*|*|*|*|*|Plural Noun|*|*|*|Profession|Verb Ending in -s|*|*|Verb|*|Adjective|*|*|*|Noun|*|*|*|*|*|*|Verb Ending in -s|*|*|*|*|*|*|*|*|*|Past Tense Verb|*|Plural Noun|*|*|Verb Ending in -s|*"""
 }
 
 story_four = {
